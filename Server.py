@@ -20,11 +20,13 @@ class TaskServer(Resource):
         parser.add_argument('RunOnce', type=bool)
         parser.add_argument('InfiniteLoop', type=bool)
         parser.add_argument('LoopLimit', type=int)
+        parser.add_argument('ReturnResult', type=str)
         args = parser.parse_args()
         
         RunOnce = args["RunOnce"]
         InfiniteLoop = args["InfiniteLoop"]
         LoopLimit = args["LoopLimit"]
+        ReturnResult = args["ReturnResult"]
         
         Fbp = []
         separator = ''
@@ -34,13 +36,24 @@ class TaskServer(Resource):
         for val in Fbp:
             print(val)
         
+        if len(Fbp) < 3:
+            return "Fbp should contain 3 lines", 200
+        
+        process.SetPayload(Fbp[2])
+        process.SetAlgorithmInSyntax(Fbp[1])
+        
         global task
         if task != None:
             process.Stop()
-        task = threading.Thread(target=process.Draw, args=(False, False, 500))
-        task.start()
+        
+        if ReturnResult == False:
+            task = threading.Thread(target=process.Draw, args=(RunOnce, InfiniteLoop, LoopLimit))
+            task.start()
+        else:
+            return (process.Draw(RunOnce, InfiniteLoop, LoopLimit)), 200
         
         return "AckP", 200
+    
     def delete(self):
         process.Stopper = True
         return "AckD", 200
