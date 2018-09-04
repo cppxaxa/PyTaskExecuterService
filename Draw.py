@@ -1,5 +1,8 @@
 import time
 
+result = None
+output = None
+
 class DrawProcess:
     Payload = ""
     AlgorithmInSyntax = ""
@@ -12,8 +15,6 @@ class DrawProcess:
         self.Payload = payloadString
         
     def Draw(self, runOnce:bool = True, infinite:bool = False, limit: int = 1):
-        output = 10
-        
         self.Stopper = False
         c = 0
         
@@ -23,8 +24,10 @@ class DrawProcess:
         
         while (c < limit):
             exec(self.AlgorithmInSyntax)
-            exec(self.Payload)
+            exec(self.Payload, globals())
             
+            print(str(result))
+
             if infinite == False:
                 c += 1
             
@@ -32,7 +35,7 @@ class DrawProcess:
                 break
             
             time.sleep(0.5)
-            
+
         return output
     
     def Stop(self):
