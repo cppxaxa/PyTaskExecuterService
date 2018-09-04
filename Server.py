@@ -3,6 +3,7 @@ from flask_restful import Resource, Api, reqparse
 import threading
 from Draw import DrawProcess
 
+
 process = DrawProcess()
 process.SetPayload("print(c)")
 
@@ -20,7 +21,7 @@ class TaskServer(Resource):
         parser.add_argument('RunOnce', type=bool)
         parser.add_argument('InfiniteLoop', type=bool)
         parser.add_argument('LoopLimit', type=int)
-        parser.add_argument('ReturnResult', type=str)
+        parser.add_argument('ReturnResult', type=bool)
         args = parser.parse_args()
         
         RunOnce = args["RunOnce"]

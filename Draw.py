@@ -1,3 +1,7 @@
+from darkflow.net.build import TFNet
+import cv2
+import json
+
 import time
 
 result = None
@@ -23,10 +27,11 @@ class DrawProcess:
             infinite = False
         
         while (c < limit):
+            globals()["output"] = None
+            globals()["result"] = None
+
             exec(self.AlgorithmInSyntax)
             exec(self.Payload, globals())
-            
-            print(str(result))
 
             if infinite == False:
                 c += 1
