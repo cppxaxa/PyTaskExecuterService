@@ -11,7 +11,8 @@
 		"6572b51d-1596-4a8d-bc42-c6bbef281214",
 		"be2c9b6a-1547-482b-b185-2eb451d74074",
 		"cb9864c8-fe3f-465b-bb71-de89450809bb",
-		"78368ab5-6a35-463c-8231-9e8e89ad53e0"
+		"78368ab5-6a35-463c-8231-9e8e89ad53e0",
+		"fd0bb8c8-7f23-4917-8a0a-e8e6e769237e"
 	],
 	"folders_order": [],
 	"folders": [],
@@ -148,6 +149,31 @@
 			"events": null,
 			"folder": null,
 			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "fd0bb8c8-7f23-4917-8a0a-e8e6e769237e",
+			"name": "DrawServer Post Init Camera Source",
+			"url": "http://localhost:5000/task",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"rawModeData": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"cap = cv2.VideoCapture(0)\\nret, frame = cap.read()\\nglobals()[\\\"imageSrc\\\"] = frame\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}",
+			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		}
 	]
