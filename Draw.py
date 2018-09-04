@@ -7,6 +7,13 @@ import time
 result = None
 output = None
 
+# Helper functions
+
+def ResultToJson(result):
+    result = str(result).replace("'", '"')
+    result = json.loads(result)
+    return result
+
 class DrawProcess:
     Payload = ""
     AlgorithmInSyntax = ""
