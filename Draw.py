@@ -25,3 +25,6 @@ class DrawProcess:
                 break
             
             time.sleep(0.5)
+        
+    def Stop(self):
+        self.Stopper = True
