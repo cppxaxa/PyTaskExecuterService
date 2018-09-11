@@ -35,6 +35,25 @@ class TaskServer(Resource):
     def delete(self):
         return "AckD", 200
 
+class EchoServer(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('Fbp', type=list, action='append')
+        parser.add_argument('RunOnce', type=bool)
+        parser.add_argument('InfiniteLoop', type=bool)
+        parser.add_argument('LoopLimit', type=int)
+        parser.add_argument('ReturnResult', type=bool)
+        args = parser.parse_args()
+        
+        Fbp = []
+        separator = ''
+        for i in range(len(args["Fbp"])):
+            Fbp.append(separator.join(args["Fbp"][i]))        
+        
+        result = { 'Fbp': Fbp, 'RunOnce': args['RunOnce'], 'InfiniteLoop': args['InfiniteLoop'], 'LoopLimit': args['LoopLimit'], 'ReturnResult': args['ReturnResult']}
+        return result, 200
+
 api.add_resource(TaskServer, '/task')
+api.add_resource(EchoServer, '/echo')
 
 app.run(host = "0.0.0.0")
