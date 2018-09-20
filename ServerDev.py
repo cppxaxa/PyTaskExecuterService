@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 import threading
-from Draw import DrawProcess
+from DrawDev import DrawProcess
 
 
 process = DrawProcess()
