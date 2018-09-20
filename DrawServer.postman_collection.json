@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e0eb1b55-5342-497c-91c9-aa245276e36d",
+		"_postman_id": "fc910d48-58a8-2a92-6b8e-9f7120ddd3a3",
 		"name": "DrawServer",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"url": "http://localhost:5000/task"
+				"url": "http://{{host}}:5000/task"
 			},
 			"response": []
 		},
@@ -21,7 +21,7 @@
 				"method": "DELETE",
 				"header": [],
 				"body": {},
-				"url": "http://localhost:5000/task"
+				"url": "http://{{host}}:5000/task"
 			},
 			"response": []
 		},
@@ -37,9 +37,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"result = tfnet.return_predict(imageSrc)\\noutput = str(result)\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"result = tfnet.return_predict(imageSrc)\\noutput = ResultToJson(str(result))\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
 				},
-				"url": "http://localhost:5000/task"
+				"url": "http://{{host}}:5000/task"
 			},
 			"response": []
 		},
@@ -75,7 +75,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"options\\\"] = {\\\"model\\\": \\\"cfg/yolo-voc.cfg\\\", \\\"load\\\": \\\"bin/yolo.weights\\\", \\\"threshold\\\": 0.1, \\\"gpu\\\":0.7}\\nglobals()[\\\"tfnet\\\"] = TFNet(options)\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
 				},
-				"url": "http://localhost:5000/task"
+				"url": "http://{{host}}:5000/task"
 			},
 			"response": []
 		},
@@ -93,7 +93,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"imageSrc\\\"] = cv2.imread(\\\"./sample_img/sample_dog.jpg\\\")\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
 				},
-				"url": "http://localhost:5000/task"
+				"url": "http://{{host}}:5000/task"
 			},
 			"response": []
 		},
@@ -111,7 +111,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = cv2.VideoCapture(0)\\nret, frame = globals()['cap'].read()\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
 				},
-				"url": "http://localhost:5000/task"
+				"url": "http://{{host}}:5000/task"
 			},
 			"response": []
 		},
@@ -129,7 +129,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"ret, frame = globals()['cap'].read()\\nglobals()[\\\"imageSrc\\\"] = frame\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
 				},
-				"url": "http://localhost:5000/task"
+				"url": "http://{{host}}:5000/task"
 			},
 			"response": []
 		},
@@ -147,7 +147,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = None\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
 				},
-				"url": "http://localhost:5000/task"
+				"url": "http://{{host}}:5000/task"
 			},
 			"response": []
 		}
