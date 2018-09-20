@@ -1,0 +1,7 @@
+c:\users\school\documents\visual studio 2013\Projects\ExtractConfigurationTemplate\ExtractConfigurationTemplate\bin\Debug\ExtractConfigurationTemplate.exe.config
+J:\Project ICAN\PyTaskExecuterService\ExtractConfigurationTemplate\bin\ExtractConfigurationTemplate.exe.config
+J:\Project ICAN\PyTaskExecuterService\ExtractConfigurationTemplate\bin\ExtractConfigurationTemplate.exe
+J:\Project ICAN\PyTaskExecuterService\ExtractConfigurationTemplate\bin\ExtractConfigurationTemplate.pdb
+J:\Project ICAN\PyTaskExecuterService\ExtractConfigurationTemplate\ExtractConfigurationTemplate\obj\Debug\ExtractConfigurationTemplate.exe
+J:\Project ICAN\PyTaskExecuterService\ExtractConfigurationTemplate\ExtractConfigurationTemplate\obj\Debug\ExtractConfigurationTemplate.pdb
+J:\Project ICAN\PyTaskExecuterService\ExtractConfigurationTemplate\ExtractConfigurationTemplate\obj\Debug\ExtractConfigurationTemplate.csprojResolveAssemblyReference.cache
