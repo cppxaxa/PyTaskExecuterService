@@ -61,4 +61,8 @@ class DrawProcess:
     
     def Stop(self):
         self.Stopper = True
+		
+sim = DrawProcess()
+result = sim.Draw()
 
+print(result)
