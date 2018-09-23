@@ -73,7 +73,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"options\\\"] = {\\\"model\\\": \\\"cfg/tiny-yolo-voc.cfg\\\", \\\"load\\\": \\\"bin/tiny-yolo-voc.weights\\\", \\\"threshold\\\": 0.1, \\\"gpu\\\":0.7}\\nglobals()[\\\"tfnet\\\"] = TFNet(options)\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": false\n}"
+					"raw": "{\r\n\t\"Fbp\":[\r\n\t\t\"Start\",\r\n\t\t\"globals()[\\\"options\\\"] = {\\\"model\\\": \\\"cfg/tiny-yolo-voc.cfg\\\", \\\"load\\\": \\\"bin/tiny-yolo-voc.weights\\\", \\\"threshold\\\": 0.1, \\\"gpu\\\":0.7}\\nglobals()[\\\"tfnet\\\"] = TFNet(options)\",\r\n\t\t\"\"\r\n\t\t],\r\n\t\"RunOnce\": true,\r\n\t\"InfiniteLoop\": false,\r\n\t\"LoopLimit\": 1,\r\n\t\"ReturnResult\": false\r\n}"
 				},
 				"url": "http://{{host}}:5000/task"
 			},
@@ -127,7 +127,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = cv2.VideoCapture(0)\\nret, frame = globals()['cap'].read()\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = cv2.VideoCapture(0)\\nret, globals()['imageSrc'] = globals()['cap'].read()\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
 				},
 				"url": "http://{{host}}:5000/task"
 			},
@@ -166,6 +166,44 @@
 					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = None\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
 				},
 				"url": "http://{{host}}:5000/task"
+			},
+			"response": []
+		},
+		{
+			"name": "ChatApiController",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"Hello\""
+				},
+				"url": "http://localhost:20000/ChatApi",
+				"description": "IUserResponse"
+			},
+			"response": []
+		},
+		{
+			"name": "MachineMessageApiController",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"Hello\""
+				},
+				"url": "http://localhost:20000/MachineMessageApi",
+				"description": "IMachineMessage"
 			},
 			"response": []
 		}
