@@ -1,4 +1,5 @@
 from darkflow.net.build import TFNet
+import requests
 import cv2
 import json
 
@@ -8,6 +9,12 @@ result = None
 output = None
 
 # Helper functions
+
+def PostResult(Host, Payload, port = 20000, Uri = None):
+    if Uri == None:
+            Uri = "http://" + Host + ":" + str(port) + "/MachineMessageApi"
+    r = requests.post(Uri, json=Payload)
+    return r.text
 
 def ResultToJson(result):
     result = str(result).replace("'", '"')

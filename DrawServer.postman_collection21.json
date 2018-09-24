@@ -326,6 +326,34 @@
 				"description": "IMachineMessage"
 			},
 			"response": []
+		},
+		{
+			"name": "DrawServer Post PythonToICAN",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"PostResult('localhost', 'Hello')\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+				},
+				"url": {
+					"raw": "http://{{host}}:5000/task",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
