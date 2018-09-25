@@ -52,7 +52,7 @@ class DrawProcess:
             if self.Stopper == True:
                 break
             
-            time.sleep(0.5)
+            # time.sleep(0.5)
 
         return output
     
