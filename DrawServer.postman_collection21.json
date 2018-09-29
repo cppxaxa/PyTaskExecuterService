@@ -1,16 +1,136 @@
 {
 	"info": {
-		"_postman_id": "fc910d48-58a8-2a92-6b8e-9f7120ddd3a3",
+		"_postman_id": "a71e1f9e-763a-4827-96a6-88e601e9318a",
 		"name": "DrawServer",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
+			"name": "TFSSD",
+			"item": [
+				{
+					"name": "DrawServer Post Init TFSSD",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"icanseeapi\\\"] = ICanSeeApiLib()\",\n\t\t\"globals()[\\\"icanseeapi\\\"].init()\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post TFSSD",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"result = icanseeapi.process(imageSrc)\\noutput = result\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post TFSSD Unload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"icanseeapi\\\"] = None\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post Init Image Source TFSSD",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"imageSrc\\\"] = cv2.imread(\\\"image.jpg\\\")\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "DrawServer",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://{{host}}:5000/task",
 					"protocol": "http",
@@ -30,7 +150,10 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://{{host}}:5000/task",
 					"protocol": "http",
