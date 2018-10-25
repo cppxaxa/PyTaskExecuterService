@@ -1,6 +1,7 @@
 import requests
 import cv2
 import json
+from minimal_object_detection_lib import *
 
 import time
 
