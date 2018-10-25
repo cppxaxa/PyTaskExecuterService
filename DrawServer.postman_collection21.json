@@ -123,6 +123,280 @@
 			]
 		},
 		{
+			"name": "Dummy Loop",
+			"item": [
+				{
+					"name": "DrawServer Post Test1 Loop",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Fbp\":[\n    \"Start\",\n    \"globals()['c'] = globals()['c'] + 1\",\n    \"print(str(globals()['c']))\\ntime.sleep(0.5)\\nif globals()['c'] == 20:\\n\\tPostResult('localhost', 'c reached 20')\"\n    ],\n  \"RunOnce\": false,\n  \"InfiniteLoop\": false,\n  \"LoopLimit\": 50,\n  \"ReturnResult\": false\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post Test1 Init",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Fbp\":[\n    \"Start\",\n    \"globals()['c'] = 0\",\n    \"\"\n    ],\n  \"RunOnce\": true,\n  \"InfiniteLoop\": false,\n  \"LoopLimit\": 1,\n  \"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Camera Utility",
+			"item": [
+				{
+					"name": "DrawServer Post Init Camera Source",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = cv2.VideoCapture(0)\\nret, globals()['imageSrc'] = globals()['cap'].read()\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post Read Camera",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"ret, frame = globals()['cap'].read()\\nglobals()[\\\"imageSrc\\\"] = frame\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post Cancel Camera",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = None\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Linux Specific",
+			"item": [
+				{
+					"name": "DrawServer Post Init TinyYolo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"Fbp\":[\r\n\t\t\"Start\",\r\n\t\t\"globals()[\\\"options\\\"] = {\\\"model\\\": \\\"cfg/tiny-yolo-voc.cfg\\\", \\\"load\\\": \\\"bin/tiny-yolo-voc.weights\\\", \\\"threshold\\\": 0.1, \\\"gpu\\\":0.7}\\nglobals()[\\\"tfnet\\\"] = TFNet(options)\",\r\n\t\t\"\"\r\n\t\t],\r\n\t\"RunOnce\": true,\r\n\t\"InfiniteLoop\": false,\r\n\t\"LoopLimit\": 1,\r\n\t\"ReturnResult\": false\r\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post Init Yolo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"options\\\"] = {\\\"model\\\": \\\"cfg/yolo-voc.cfg\\\", \\\"load\\\": \\\"bin/yolo.weights\\\", \\\"threshold\\\": 0.1, \\\"gpu\\\":0.7}\\nglobals()[\\\"tfnet\\\"] = TFNet(options)\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ICAN.SIC",
+			"item": [
+				{
+					"name": "ChatApiController",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Hello\""
+						},
+						"url": {
+							"raw": "http://localhost:20000/ChatApi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "20000",
+							"path": [
+								"ChatApi"
+							]
+						},
+						"description": "IUserResponse"
+					},
+					"response": []
+				},
+				{
+					"name": "MachineMessageApiController",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Hello\""
+						},
+						"url": {
+							"raw": "http://localhost:20000/MachineMessageApi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "20000",
+							"path": [
+								"MachineMessageApi"
+							]
+						},
+						"description": "IMachineMessage"
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "DrawServer",
 			"request": {
 				"method": "GET",
@@ -225,62 +499,6 @@
 			"response": []
 		},
 		{
-			"name": "DrawServer Post Init TinyYolo",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\t\"Fbp\":[\r\n\t\t\"Start\",\r\n\t\t\"globals()[\\\"options\\\"] = {\\\"model\\\": \\\"cfg/tiny-yolo-voc.cfg\\\", \\\"load\\\": \\\"bin/tiny-yolo-voc.weights\\\", \\\"threshold\\\": 0.1, \\\"gpu\\\":0.7}\\nglobals()[\\\"tfnet\\\"] = TFNet(options)\",\r\n\t\t\"\"\r\n\t\t],\r\n\t\"RunOnce\": true,\r\n\t\"InfiniteLoop\": false,\r\n\t\"LoopLimit\": 1,\r\n\t\"ReturnResult\": false\r\n}"
-				},
-				"url": {
-					"raw": "http://{{host}}:5000/task",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "5000",
-					"path": [
-						"task"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DrawServer Post Init Yolo",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"options\\\"] = {\\\"model\\\": \\\"cfg/yolo-voc.cfg\\\", \\\"load\\\": \\\"bin/yolo.weights\\\", \\\"threshold\\\": 0.1, \\\"gpu\\\":0.7}\\nglobals()[\\\"tfnet\\\"] = TFNet(options)\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
-				},
-				"url": {
-					"raw": "http://{{host}}:5000/task",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "5000",
-					"path": [
-						"task"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "DrawServer Post Init Image Source",
 			"request": {
 				"method": "POST",
@@ -305,148 +523,6 @@
 						"task"
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "DrawServer Post Init Camera Source",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = cv2.VideoCapture(0)\\nret, globals()['imageSrc'] = globals()['cap'].read()\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
-				},
-				"url": {
-					"raw": "http://{{host}}:5000/task",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "5000",
-					"path": [
-						"task"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DrawServer Post Read Camera",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"ret, frame = globals()['cap'].read()\\nglobals()[\\\"imageSrc\\\"] = frame\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
-				},
-				"url": {
-					"raw": "http://{{host}}:5000/task",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "5000",
-					"path": [
-						"task"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DrawServer Post Cancel Camera",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = None\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
-				},
-				"url": {
-					"raw": "http://{{host}}:5000/task",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "5000",
-					"path": [
-						"task"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ChatApiController",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "\"Hello\""
-				},
-				"url": {
-					"raw": "http://localhost:20000/ChatApi",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "20000",
-					"path": [
-						"ChatApi"
-					]
-				},
-				"description": "IUserResponse"
-			},
-			"response": []
-		},
-		{
-			"name": "MachineMessageApiController",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "\"Hello\""
-				},
-				"url": {
-					"raw": "http://localhost:20000/MachineMessageApi",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "20000",
-					"path": [
-						"MachineMessageApi"
-					]
-				},
-				"description": "IMachineMessage"
 			},
 			"response": []
 		},
