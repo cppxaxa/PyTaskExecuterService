@@ -2,6 +2,9 @@ from darkflow.net.build import TFNet
 import requests
 import cv2
 import json
+import numpy as np
+import urllib.request as urllib
+from minimal_object_detection_lib import *
 
 import time
 
@@ -20,6 +23,12 @@ def ResultToJson(result):
     result = str(result).replace("'", '"')
     result = json.loads(result)
     return result
+
+def getImageFromShotUri(url):
+    imgResp = urllib.urlopen(url)
+    imgNp = np.array(bytearray(imgResp.read()),dtype=np.uint8)
+    img = cv2.imdecode(imgNp,-1)
+    return img
 
 class DrawProcess:
     Payload = ""
