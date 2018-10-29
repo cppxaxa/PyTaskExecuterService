@@ -3,6 +3,7 @@ import cv2
 import json
 import numpy as np
 import urllib.request as urllib
+import matplotlib.pyplot as plt
 from minimal_object_detection_lib import *
 
 import time
@@ -28,6 +29,22 @@ def getImageFromShotUri(url):
     imgNp = np.array(bytearray(imgResp.read()),dtype=np.uint8)
     img = cv2.imdecode(imgNp,-1)
     return img
+
+def PyPlot(image):
+    plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+    plt.show()
+
+def ImShow(window, image, millis = 0):
+    val = 0
+    count = 0
+    while val != ord('q'):
+        cv2.imshow(window, image)
+        val = cv2.waitKey(30)
+        count += 1
+        if (millis != 0 and (count * 30) > millis):
+            break
+    cv2.destroyAllWindows()
+    
 
 class DrawProcess:
     Payload = ""
