@@ -124,6 +124,47 @@
 			]
 		},
 		{
+			"name": "Generate Dummy MachineImageMessage",
+			"item": [
+				{
+					"name": "DrawServer Post Test1 Loop",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Fbp\":[\n    \"Start\",\n    \"globals()['c'] = globals()['c'] + 1\",\n    \"print(str(globals()['c']))\\ntime.sleep(0.5)\\nif globals()['c'] == 20:\\n\\tPostResult('localhost', 'c reached 20')\\n\\tPostDummyImage('localhost', 20000)\"\n    ],\n  \"RunOnce\": false,\n  \"InfiniteLoop\": false,\n  \"LoopLimit\": 50,\n  \"ReturnResult\": false\n}"
+						},
+						"url": "http://{{host}}:5000/task"
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post Test1 Init",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Fbp\":[\n    \"Start\",\n    \"PostDummyImage('localhost', 20000)\\nglobals()['c'] = 1\",\n    \"\"\n    ],\n  \"RunOnce\": true,\n  \"InfiniteLoop\": false,\n  \"LoopLimit\": 1,\n  \"ReturnResult\": true\n}"
+						},
+						"url": "http://{{host}}:5000/task"
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Camera Utility",
 			"item": [
 				{
@@ -261,6 +302,32 @@
 						},
 						"url": "http://localhost:20000/MachineMessageApi",
 						"description": "IMachineMessage"
+					},
+					"response": []
+				},
+				{
+					"name": "MachineImageMessageApiController",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:20000/MachineImageMessageApi"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:20000/MachineImageMessageApi/Banana3_7bd04546-72a7-49ea-b11b-584a0e9460bd",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:20000/MachineImageMessageApi/Banana3_7bd04546-72a7-49ea-b11b-584a0e9460bd"
 					},
 					"response": []
 				}
