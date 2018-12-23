@@ -45,6 +45,24 @@
 					"response": []
 				},
 				{
+					"name": "DrawServer Post TFSSD ChatApi",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"result = globals()[\\\"tfssd\\\"].Process(imageSrc)\\noutput = ResultToJson(str(result))\\nPostResult('localhost', str(result), 20000)\\nPostImage('result.jpg', globals()['imageSrc'], 'localhost', 20000)\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": "http://{{host}}:5000/task"
+					},
+					"response": []
+				},
+				{
 					"name": "DrawServer Post TFSSD Unload",
 					"request": {
 						"method": "POST",
@@ -265,7 +283,7 @@
 			]
 		},
 		{
-			"name": "ICAN.SIC",
+			"name": "ICAN.SIC ChatApiController",
 			"item": [
 				{
 					"name": "ChatApiController",
@@ -328,6 +346,47 @@
 							"raw": ""
 						},
 						"url": "http://localhost:20000/MachineImageMessageApi/Banana3_7bd04546-72a7-49ea-b11b-584a0e9460bd"
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post PythonToICAN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"PostResult('localhost', 'Hello', 20000)\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": "http://{{host}}:5000/task"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Request Image",
+			"item": [
+				{
+					"name": "DrawServer Post Request Result Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Fbp\":[\n    \"Start\",\n    \"PostImage('result.jpg', globals()['imageSrc'], 'localhost', 20000)\\nglobals()['c'] = 1\",\n    \"\"\n    ],\n  \"RunOnce\": true,\n  \"InfiniteLoop\": false,\n  \"LoopLimit\": 1,\n  \"ReturnResult\": true\n}"
+						},
+						"url": "http://{{host}}:5000/task"
 					},
 					"response": []
 				}
@@ -425,7 +484,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"PostResult('localhost', 'Hello')\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+					"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"PostResult('localhost', 'Hello', 20000)\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
 				},
 				"url": "http://{{host}}:5000/task"
 			},

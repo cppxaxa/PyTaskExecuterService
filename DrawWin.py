@@ -25,7 +25,7 @@ def PostFile(filename, fileObj, Host, Port = 20000):
 def PostImage(filename, image, Host, Port = 20000):
     retval, content = cv2.imencode('.jpg', image)
     fileObj = io.BytesIO(content)
-    PostFile(filename, fileObj, 'localhost', 20000)
+    PostFile(filename, fileObj, Host, Port)
     
 def GenerateDummyImage():
     img = np.zeros((400,550,3), np.uint8)
@@ -42,7 +42,7 @@ def GenerateDummyImage():
 def PostDummyImage(Host, Port = 20000):
     filename = 'shot.jpg'
     img = GenerateDummyImage()
-    PostImage(filename, img, 'localhost', 20000)
+    PostImage(filename, img, Host, Port)
 
 
 
