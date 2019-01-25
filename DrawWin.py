@@ -5,6 +5,7 @@ import numpy as np
 import urllib.request as urllib
 import matplotlib.pyplot as plt
 from minimal_object_detection_lib import *
+from core.backend import ModelWrapper
 
 import io
 import random

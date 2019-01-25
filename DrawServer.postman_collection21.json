@@ -151,6 +151,151 @@
 			]
 		},
 		{
+			"name": "Image Caption Generator Minimal",
+			"item": [
+				{
+					"name": "DrawServer Post Init ICG",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"model\\\"] = ModelWrapper()\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post ICG",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"image_data = cv2.imencode('.jpg', imageSrc)[1].tostring()\\nresult = globals()[\\\"model\\\"].predict(image_data)\\noutput = result\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post ICG ChatApi",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"image_data = cv2.imencode('.jpg', imageSrc)[1].tostring()\\nresult = globals()[\\\"model\\\"].predict(image_data)\\noutput = result\\nPostResult('localhost', str(result), 20000)\\nPostImage('result.jpg', globals()['imageSrc'], 'localhost', 20000)\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post ICG Unload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"model\\\"] = None\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post Init Image Source ICG",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()[\\\"imageSrc\\\"] = cv2.imread(\\\"image.jpg\\\")\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:5000/task",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Dummy Loop",
 			"item": [
 				{
@@ -586,6 +731,38 @@
 							"port": "5000",
 							"path": [
 								"task"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AllenServer",
+			"item": [
+				{
+					"name": "localhost:5003/service",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"passage\": \"The Matrix is a 1999 science fiction action film written and directed by The Wachowskis, starring Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving, and Joe Pantoliano.\",\n\t\"question\": \"Who stars in The Matrix?\"\n}"
+						},
+						"url": {
+							"raw": "localhost:5003/service",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"service"
 							]
 						}
 					},
