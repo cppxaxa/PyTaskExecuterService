@@ -742,7 +742,7 @@
 			"name": "AllenServer",
 			"item": [
 				{
-					"name": "localhost:5003/service",
+					"name": "Passage-Question Query",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -756,7 +756,8 @@
 							"raw": "{\n\t\"passage\": \"The Matrix is a 1999 science fiction action film written and directed by The Wachowskis, starring Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving, and Joe Pantoliano.\",\n\t\"question\": \"Who stars in The Matrix?\"\n}"
 						},
 						"url": {
-							"raw": "localhost:5003/service",
+							"raw": "http://localhost:5003/service",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
