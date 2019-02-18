@@ -80,6 +80,9 @@ def ImShow(window, image, millis = 0):
             break
     cv2.destroyAllWindows()
     
+refreshCameraCode = ''
+def LoadCameraData():
+    exec(refreshCameraCode, globals())
 
 class DrawProcess:
     Payload = ""

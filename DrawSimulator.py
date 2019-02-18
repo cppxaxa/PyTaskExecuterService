@@ -13,6 +13,10 @@ def ResultToJson(result):
     result = str(result).replace("'", '"')
     result = json.loads(result)
     return result
+    
+refreshCameraCode = ''
+def LoadCameraData():
+    exec(refreshCameraCode, globals())
 
 class DrawProcess:
     Payload = ""

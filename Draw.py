@@ -78,6 +78,10 @@ def ImShow(window, image, millis = 0):
         if (millis != 0 and (count * 30) > millis):
             break
     cv2.destroyAllWindows()
+    
+refreshCameraCode = ''
+def LoadCameraData():
+    exec(refreshCameraCode, globals())
 
 class DrawProcess:
     Payload = ""
