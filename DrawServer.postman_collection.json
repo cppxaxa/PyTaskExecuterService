@@ -45,6 +45,24 @@
 					"response": []
 				},
 				{
+					"name": "DrawServer Post TFSSD Experiment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"\",\n\t\t\"result = globals()[\\\"tfssd\\\"].Process(imageSrc)\\noutput = ResultToJson(str(result))\\nprint(result)\\ncountMap = {}\\nfor unit in result:\\n\\tprint(unit['label'].strip())\\n\\tif unit['label'].strip() in countMap:\\n\\t\\tcountMap[unit['label']] += 1\\n\\telse:\\n\\t\\tcountMap[unit['label']] = 1\\nprint('Object count ', countMap)\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": "http://{{host}}:5000/task"
+					},
+					"response": []
+				},
+				{
 					"name": "DrawServer Post TFSSD ChatApi",
 					"request": {
 						"method": "POST",
@@ -292,7 +310,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = cv2.VideoCapture(0)\\nret, globals()['imageSrc'] = globals()['cap'].read()\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"globals()['cap'] = cv2.VideoCapture(0)\\nret, globals()['imageSrc'] = globals()['cap'].read()\\nglobals()['refreshCameraCode'] = 'print(\\\\'Hello\\\\')'\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
 						},
 						"url": "http://{{host}}:5000/task"
 					},
@@ -300,6 +318,24 @@
 				},
 				{
 					"name": "DrawServer Post Read Camera",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Fbp\":[\n\t\t\"Start\",\n\t\t\"ret, frame = globals()['cap'].read()\\nglobals()[\\\"imageSrc\\\"] = frame\",\n\t\t\"\"\n\t\t],\n\t\"RunOnce\": true,\n\t\"InfiniteLoop\": false,\n\t\"LoopLimit\": 1,\n\t\"ReturnResult\": true\n}"
+						},
+						"url": "http://{{host}}:5000/task"
+					},
+					"response": []
+				},
+				{
+					"name": "DrawServer Post Read Camera Experiment",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -505,6 +541,83 @@
 							"raw": "{\n\t\"passage\": \"The Matrix is a 1999 science fiction action film written and directed by The Wachowskis, starring Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving, and Joe Pantoliano.\",\n\t\"question\": \"Who stars in The Matrix?\"\n}"
 						},
 						"url": "http://localhost:5003/service"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ICAN.SIC Framework Calls",
+			"item": [
+				{
+					"name": "ListPlugins",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"[ICAN.SIC] ListPlugins\""
+						},
+						"url": "http://localhost:20000/MachineMessageApi"
+					},
+					"response": []
+				},
+				{
+					"name": "EnablePlugin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"[ICAN.SIC] EnablePlugin VLCRemote\""
+						},
+						"url": "http://localhost:20000/MachineMessageApi"
+					},
+					"response": []
+				},
+				{
+					"name": "DisablePlugin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"[ICAN.SIC] DisablePlugin VLCRemote\""
+						},
+						"url": "http://localhost:20000/MachineMessageApi"
+					},
+					"response": []
+				},
+				{
+					"name": "Soft Restart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Start_ICAN.SIC\""
+						},
+						"url": "http://localhost:20000/MachineMessageApi"
 					},
 					"response": []
 				}
