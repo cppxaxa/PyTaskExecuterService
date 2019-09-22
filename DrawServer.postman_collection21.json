@@ -689,10 +689,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:20000/MachineImageMessageApi",
 							"protocol": "http",
@@ -712,10 +708,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:20000/MachineImageMessageApi/Banana3_7bd04546-72a7-49ea-b11b-584a0e9460bd",
 							"protocol": "http",
@@ -949,10 +941,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://{{host}}:5000/task",
 					"protocol": "http",
@@ -972,10 +960,6 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://{{host}}:5000/task",
 					"protocol": "http",
